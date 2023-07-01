@@ -3,6 +3,7 @@ package testcases;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -24,6 +25,13 @@ public class FirstTest1 {
         options.addArguments("--remote-allow-origins=*");
 
         driver = new ChromeDriver(options);
+    }
+
+    @AfterMethod
+    public void tearDown(){
+        if(driver!=null){
+            driver.quit();
+        }
     }
 
     public void takeMeSignInPage() throws InterruptedException{
